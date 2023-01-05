@@ -22,3 +22,4 @@ It is difficult for me to package fluffychat, Some one will clone it to ~/.cache
 	I think people can choose branch to clone to use default channel
 	Install needed option, like linux or something else
 * better error
+* meson build script
