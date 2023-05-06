@@ -1,4 +1,7 @@
-use std::{error::Error, process::Command};
+use std::{
+    error::Error,
+    process::{Command, Stdio},
+};
 
 use crate::{
     config::{Config, CONFIG},
@@ -20,6 +23,8 @@ pub fn flutter_clone() -> Result<ProcessResult, Box<dyn Error>> {
     };
     match Command::new("git")
         .args(["clone", FLUTTERREPO, "-b", branch, path])
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
         .spawn()
     {
         Ok(process) => process,

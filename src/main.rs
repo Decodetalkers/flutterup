@@ -54,7 +54,8 @@ fn main() {
         }
         "flutter" => {
             let options = &args[1..];
-            match wrapper::run_wrapper("flutter", options) {
+            let flutterbin = format!("{path}/bin/flutter");
+            match wrapper::run_wrapper(&flutterbin, options) {
                 Ok(messages) => match messages {
                     constenv::ProcessResult::Others => {
                         eprintln!("Maybe stopped?");
@@ -89,7 +90,8 @@ fn main() {
         }
         "dart" => {
             let options = &args[1..];
-            match wrapper::run_wrapper("dart", options) {
+            let dartbin = format!("{path}/bin/flutter");
+            match wrapper::run_wrapper(&dartbin, options) {
                 Ok(messages) => match messages {
                     constenv::ProcessResult::Others => {
                         eprintln!("Maybe stopped?");
