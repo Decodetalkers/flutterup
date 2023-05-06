@@ -16,7 +16,7 @@ pub fn flutter_clone() -> Result<ProcessResult, Box<dyn Error>> {
     {
         branch
     } else {
-        "master"
+        "stable"
     };
     match Command::new("git")
         .args(["clone", FLUTTERREPO, "-b", branch, path])
