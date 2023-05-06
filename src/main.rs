@@ -2,9 +2,9 @@ use std::{env, path::PathBuf};
 
 use constenv::{PathMessage, ProcessResult};
 mod clonetoolchain;
+mod config;
 mod constenv;
 mod wrapper;
-//use clap::Command;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
@@ -61,8 +61,8 @@ fn main() {
                     }
                     constenv::ProcessResult::NotFound => {
                         let PathMessage::GetPath { path } = &*constenv::CLONEPATH else {
-                                unreachable!()
-                            };
+                            unreachable!()
+                        };
                         let flutterpath = PathBuf::from(path).join("bin").join("flutter");
                         if flutterpath.exists() {
                             wrapper::run_wrapper(flutterpath.to_str().unwrap(), options).unwrap();

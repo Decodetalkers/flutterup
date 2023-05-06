@@ -1,13 +1,25 @@
 use std::{error::Error, process::Command};
 
-use crate::constenv::{PathMessage, ProcessResult, CLONEPATH, FLUTTERREPO};
+use crate::{
+    config::{Config, CONFIG},
+    constenv::{PathMessage, ProcessResult, CLONEPATH, FLUTTERREPO},
+};
 
 pub fn flutter_clone() -> Result<ProcessResult, Box<dyn Error>> {
     let PathMessage::GetPath { path } = &*CLONEPATH else {
         unreachable!()
     };
+    let branch = if let Some(Config {
+        branch: Some(branch),
+        ..
+    }) = &*CONFIG
+    {
+        branch
+    } else {
+        "master"
+    };
     match Command::new("git")
-        .args(["clone", FLUTTERREPO, path])
+        .args(["clone", FLUTTERREPO, "-b", branch, path])
         .spawn()
     {
         Ok(process) => process,
