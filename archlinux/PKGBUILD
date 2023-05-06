@@ -1,0 +1,22 @@
+pkgname=flutterup
+pkgver=0.1.0
+pkgrel=1.0
+pkgdesc='flutter tool'
+arch=('x86_64' 'aarch64')
+url='https://github.com/Decodetalkers/flutterup'
+license=('MIT')
+makedepends=('git' 'ninja' 'meson' 'rust')
+source=('source.tar.gz')
+sha512sums=('SKIP')
+
+build() {
+  meson setup \
+    -Dprefix=/usr \
+    -Dbuildtype=release \
+    build
+  ninja -C build
+}
+
+package() {
+  DESTDIR="$pkgdir" ninja -C build install
+}
