@@ -5,6 +5,7 @@ pkgdesc='flutter tool'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Decodetalkers/flutterup'
 license=('MIT')
+provides=('flutter' 'dart')
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=('source.tar.gz')
 sha512sums=('SKIP')
