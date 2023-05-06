@@ -90,7 +90,7 @@ fn main() {
         }
         "dart" => {
             let options = &args[1..];
-            let dartbin = format!("{path}/bin/flutter");
+            let dartbin = format!("{path}/bin/dart");
             match wrapper::run_wrapper(&dartbin, options) {
                 Ok(messages) => match messages {
                     constenv::ProcessResult::Others => {
