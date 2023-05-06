@@ -1,9 +1,17 @@
-use std::{error::Error, process::Command};
+use std::{
+    error::Error,
+    process::{Command, Stdio},
+};
 
 use crate::constenv::ProcessResult;
 
 pub fn run_wrapper(command: &str, args: &[String]) -> Result<ProcessResult, Box<dyn Error>> {
-    match Command::new(command).args(args).spawn() {
+    match Command::new(command)
+        .args(args)
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
+        .spawn()
+    {
         Ok(process) => process,
         Err(e) => {
             if let std::io::ErrorKind::NotFound = e.kind() {
