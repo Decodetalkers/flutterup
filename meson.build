@@ -13,6 +13,7 @@ targetdir = 'debug'
 
 if not get_option('debug')
   command += '--release'
+  targetdir = 'release'
 endif
 
 command += [
