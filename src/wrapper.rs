@@ -8,6 +8,7 @@ use crate::constenv::ProcessResult;
 pub fn run_wrapper(command: &str, args: &[String]) -> Result<ProcessResult, Box<dyn Error>> {
     match Command::new(command)
         .args(args)
+        .stdin(Stdio::inherit())
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())
         .spawn()
