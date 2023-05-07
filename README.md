@@ -1,5 +1,8 @@
 # A flutter wrapper
 
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/flutterup.svg)](https://repology.org/project/flutterup/versions)
+
 ## Just run flutterup , and install the flutter
 
 ## How it works
