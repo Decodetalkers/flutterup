@@ -1,5 +1,5 @@
 pkgname=flutterup
-pkgver=0.1.0
+pkgver=2.1.0
 pkgrel=1.0
 pkgdesc='flutter tool'
 arch=('x86_64' 'aarch64')
