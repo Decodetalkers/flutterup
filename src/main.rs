@@ -37,8 +37,8 @@ fn flutterupinfo() {
         }
         Some(("install", _)) => {
             let PathMessage::GetPath { path } = &*constenv::CLONEPATH else {
-                            unreachable!()
-                        };
+                unreachable!()
+            };
             let flutterpath = PathBuf::from(path).join("bin").join("flutter");
             if flutterpath.exists() {
                 println!("Seems flutter is already installed");
