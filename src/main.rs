@@ -20,6 +20,11 @@ fn flutterupinfo() {
                 .long_flag("upgrade")
                 .about("Get upgrade"),
         )
+        .subcommand(
+            clap::Command::new("install")
+                .long_flag("install")
+                .about("install flutter"),
+        )
         .get_matches();
     match matches.subcommand() {
         Some(("upgrade", _)) => {
@@ -28,6 +33,28 @@ fn flutterupinfo() {
             {
             } else {
                 eprintln!("SomeError");
+            }
+        }
+        Some(("install", _)) => {
+            let PathMessage::GetPath { path } = &*constenv::CLONEPATH else {
+                            unreachable!()
+                        };
+            let flutterpath = PathBuf::from(path).join("bin").join("flutter");
+            if flutterpath.exists() {
+                println!("Seems flutter is already installed");
+                return;
+            }
+            match clonetoolchain::flutter_clone() {
+                Ok(messages) => {
+                    if let ProcessResult::Successed = messages {
+                        println!("Flutter is installed");
+                    } else {
+                        eprintln!("Some Error");
+                    }
+                }
+                Err(e) => {
+                    eprintln!("SomeError : {e}");
+                }
             }
         }
         _ => unimplemented!(),

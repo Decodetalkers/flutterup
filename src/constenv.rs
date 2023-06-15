@@ -32,7 +32,10 @@ fn get_clone_path() -> PathMessage {
         let Ok(home) = std::env::var("HOME") else {
         return PathMessage::SomeError { error: "Cannot find home".to_string() };
     };
-        PathBuf::from(&home).join(".local").join("share")
+        PathBuf::from(&home)
+            .join(".local")
+            .join("share")
+            .join("flutterup")
     };
     if !targetpath.exists() && std::fs::create_dir_all(&targetpath).is_err() {
         return PathMessage::SomeError {
