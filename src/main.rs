@@ -25,6 +25,11 @@ fn flutterupinfo() {
                 .long_flag("install")
                 .about("install flutter"),
         )
+        .subcommand(
+            clap::Command::new("showconfig")
+                .long_flag("showconfig")
+                .about("Show the config of flutterup"),
+        )
         .get_matches();
     match matches.subcommand() {
         Some(("upgrade", _)) => {
@@ -56,6 +61,22 @@ fn flutterupinfo() {
                     eprintln!("SomeError : {e}");
                 }
             }
+        }
+        Some(("showconfig", _)) => {
+            let config = config::CONFIG.clone();
+            let (branch, dir) = {
+                config
+                    .map(|conf| {
+                        (
+                            conf.branch.unwrap_or("stable".to_string()),
+                            conf.flutter_sdk_dir
+                                .unwrap_or("~/.local/share/flutterup".to_string()),
+                        )
+                    })
+                    .unwrap_or(("stable".to_string(), "~/.local/share/flutterup".to_string()))
+            };
+            println!("flutter sdk branch is {branch}");
+            println!("cloned dir is is {dir}");
         }
         _ => unimplemented!(),
     }

@@ -2,7 +2,7 @@ use once_cell::sync::Lazy;
 use serde::Deserialize;
 use std::io::Read;
 
-#[derive(Deserialize, PartialEq, Eq, Debug)]
+#[derive(Deserialize, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
     pub flutter_sdk_dir: Option<String>,
     pub branch: Option<String>,

@@ -19,6 +19,17 @@ If program can notfind the real target, it will clone the real one from github
 
 It is difficult for me to package fluffychat, Some one will clone it to ~/.cache, but every time, it will be clean or reclone. And flutter cannot just put to root, because it need `.git` to update and work. And flutter like snap very much, this make me unhappy
 
+## Configure
+
+It will read a config in `~/.config/flutterup/config.toml`
+
+configure is like
+
+```toml
+branch = "stable"
+flutter_sdk_dir = "/where/you/want/flutter/to/clone"
+````
+
 ## TODO
 
 * rustyline cli
