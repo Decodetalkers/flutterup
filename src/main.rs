@@ -18,12 +18,12 @@ fn flutterupinfo() {
         .subcommand(
             clap::Command::new("upgrade")
                 .long_flag("upgrade")
-                .about("Get upgrade"),
+                .about("Upgrade flutter"),
         )
         .subcommand(
             clap::Command::new("install")
                 .long_flag("install")
-                .about("install flutter"),
+                .about("Install flutter"),
         )
         .subcommand(
             clap::Command::new("showconfig")
@@ -52,7 +52,7 @@ fn flutterupinfo() {
             match clonetoolchain::flutter_clone() {
                 Ok(messages) => {
                     if let ProcessResult::Successed = messages {
-                        println!("Flutter is installed");
+                        println!("Flutter has been installed");
                     } else {
                         eprintln!("Some Error");
                     }
@@ -76,7 +76,7 @@ fn flutterupinfo() {
                     .unwrap_or(("stable".to_string(), "~/.local/share/flutterup".to_string()))
             };
             println!("flutter sdk branch is {branch}");
-            println!("cloned dir is is {dir}");
+            println!("cloned dir is in {dir}");
         }
         _ => unimplemented!(),
     }
@@ -119,7 +119,7 @@ fn main() {
                         match clonetoolchain::flutter_clone() {
                             Ok(messages) => {
                                 if let ProcessResult::Successed = messages {
-                                    println!("Flutter is installed");
+                                    println!("Flutter has been installed");
                                 } else {
                                     eprintln!("Some Error");
                                 }
@@ -155,7 +155,7 @@ fn main() {
                         match clonetoolchain::flutter_clone() {
                             Ok(messages) => {
                                 if let ProcessResult::Successed = messages {
-                                    println!("Flutter is installed");
+                                    println!("Flutter has been installed");
                                 } else {
                                     eprintln!("Some Error");
                                 }
