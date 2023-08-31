@@ -3,27 +3,35 @@
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/flutterup.svg)](https://repology.org/project/flutterup/versions)
 
-## Just run flutterup , and install the flutter
+## One easy command to manage and install flutter
 
-## How it works
+Just run *flutterup* to install the flutter SDK or upgrade it
 
-I think after it will create soft link under /usr/bin
+## How does it work
 
-* flutterup
-* flutter
-* dart
+*flutterup* installs symlinks in `/usr/bin` for the following binaries:
+- flutter
+- dart
 
-If program can notfind the real target, it will clone the real one from github
+linking to `/usr/bin/flutterup` 
 
-## Why create
+When flutter or dart is run, flutterup will install the real target if it is not found, by cloning it from github.
 
-It is difficult for me to package fluffychat, Some one will clone it to ~/.cache, but every time, it will be clean or reclone. And flutter cannot just put to root, because it need `.git` to update and work. And flutter like snap very much, this make me unhappy
+## Why did I create this project
 
-## Configure
+It was difficult for me to package *fluffychat*.
 
-It will read a config in `~/.config/flutterup/config.toml`
+One can clone *flutter* to `~/.cache`, but once in a while, it could be wiped or recloned.
 
-configure is like
+And *flutter* cannot be installed as *root*, because it needs to use a `.git` directory to be updated and to work flawlessly.
+
+And flutter works very much like snap, in that regard, this made me quite unhappy.
+
+## Configuration
+
+It will read its configuration file at `~/.config/flutterup/config.toml`
+
+The syntax is like this
 
 ```toml
 branch = "stable"
@@ -33,7 +41,7 @@ flutter_sdk_dir = "/where/you/want/flutter/to/clone"
 ## TODO
 
 * rustyline cli
-	I think people can choose branch to clone to use default channel
-	Install needed option, like linux or something else
-* better error
+	- people could be able to choose the branch to clone to use a different channel
+	- Install command could have options, like linux or something else
+* better error messages
 * meson build script
