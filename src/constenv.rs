@@ -30,8 +30,10 @@ fn get_clone_path() -> PathMessage {
         PathBuf::from(path)
     } else {
         let Ok(home) = std::env::var("HOME") else {
-        return PathMessage::SomeError { error: "Cannot find home".to_string() };
-    };
+            return PathMessage::SomeError {
+                error: "Cannot find home".to_string(),
+            };
+        };
         PathBuf::from(&home)
             .join(".local")
             .join("share")

@@ -146,8 +146,8 @@ fn main() {
                     }
                     constenv::ProcessResult::NotFound => {
                         let PathMessage::GetPath { path } = &*constenv::CLONEPATH else {
-                                unreachable!()
-                            };
+                            unreachable!()
+                        };
                         let flutterpath = PathBuf::from(path).join("bin").join("dart");
                         if flutterpath.exists() {
                             wrapper::run_wrapper(flutterpath.to_str().unwrap(), options).unwrap();
