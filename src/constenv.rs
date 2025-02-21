@@ -16,7 +16,7 @@ pub static CLONEPATH: Lazy<PathMessage> = Lazy::new(get_clone_path);
 pub enum ProcessResult {
     NotFound,
     Others,
-    Successed,
+    Successded,
 }
 
 fn get_clone_path() -> PathMessage {

@@ -4,8 +4,8 @@ use std::{
 };
 
 use crate::{
-    config::{Config, CONFIG},
-    constenv::{PathMessage, ProcessResult, CLONEPATH, FLUTTERREPO},
+    config::{CONFIG, Config},
+    constenv::{CLONEPATH, FLUTTERREPO, PathMessage, ProcessResult},
 };
 
 pub fn flutter_clone() -> Result<ProcessResult, Box<dyn Error>> {
@@ -36,5 +36,5 @@ pub fn flutter_clone() -> Result<ProcessResult, Box<dyn Error>> {
         }
     }
     .wait()?;
-    Ok(ProcessResult::Successed)
+    Ok(ProcessResult::Successded)
 }

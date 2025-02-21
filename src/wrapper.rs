@@ -22,5 +22,5 @@ pub fn run_wrapper(command: &str, args: &[String]) -> Result<ProcessResult, Box<
         }
     }
     .wait()?;
-    Ok(ProcessResult::Successed)
+    Ok(ProcessResult::Successded)
 }

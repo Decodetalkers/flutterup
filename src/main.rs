@@ -33,7 +33,7 @@ fn flutterupinfo() {
         .get_matches();
     match matches.subcommand() {
         Some(("upgrade", _)) => {
-            if let Ok(ProcessResult::Successed) =
+            if let Ok(ProcessResult::Successded) =
                 wrapper::run_wrapper("flutter", &["upgrade".to_string()])
             {
             } else {
@@ -51,7 +51,7 @@ fn flutterupinfo() {
             }
             match clonetoolchain::flutter_clone() {
                 Ok(messages) => {
-                    if let ProcessResult::Successed = messages {
+                    if let ProcessResult::Successded = messages {
                         println!("Flutter has been installed");
                     } else {
                         eprintln!("Some Error");
@@ -91,7 +91,7 @@ fn main() {
     };
     let pathenv = std::env::var("PATH").unwrap();
     let newpath = format!("{path}/bin:{pathenv}");
-    std::env::set_var("PATH", newpath);
+    unsafe { std::env::set_var("PATH", newpath) };
     // Prints each argument on a separate line
     let args: Vec<String> = env::args().collect();
     let first = args[0].split('/').last().unwrap();
@@ -118,7 +118,7 @@ fn main() {
                         }
                         match clonetoolchain::flutter_clone() {
                             Ok(messages) => {
-                                if let ProcessResult::Successed = messages {
+                                if let ProcessResult::Successded = messages {
                                     println!("Flutter has been installed");
                                 } else {
                                     eprintln!("Some Error");
@@ -129,7 +129,7 @@ fn main() {
                             }
                         }
                     }
-                    constenv::ProcessResult::Successed => {}
+                    constenv::ProcessResult::Successded => {}
                 },
                 Err(e) => {
                     eprintln!("SomethingError :{e}");
@@ -154,7 +154,7 @@ fn main() {
                         }
                         match clonetoolchain::flutter_clone() {
                             Ok(messages) => {
-                                if let ProcessResult::Successed = messages {
+                                if let ProcessResult::Successded = messages {
                                     println!("Flutter has been installed");
                                 } else {
                                     eprintln!("Some Error");
@@ -165,7 +165,7 @@ fn main() {
                             }
                         }
                     }
-                    constenv::ProcessResult::Successed => {}
+                    constenv::ProcessResult::Successded => {}
                 },
                 Err(e) => {
                     eprintln!("SomethingError :{e}");
