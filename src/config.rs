@@ -1,6 +1,6 @@
-use once_cell::sync::Lazy;
 use serde::Deserialize;
 use std::io::Read;
+use std::sync::LazyLock;
 
 #[derive(Deserialize, PartialEq, Eq, Debug, Clone)]
 pub struct Config {
@@ -28,4 +28,4 @@ impl Config {
     }
 }
 
-pub static CONFIG: Lazy<Option<Config>> = Lazy::new(Config::config_from_file);
+pub static CONFIG: LazyLock<Option<Config>> = LazyLock::new(Config::config_from_file);

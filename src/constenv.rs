@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 
 use crate::config::Config;
 
@@ -11,7 +11,7 @@ pub enum PathMessage {
 
 pub const FLUTTERREPO: &str = "https://github.com/flutter/flutter.git";
 
-pub static CLONEPATH: Lazy<PathMessage> = Lazy::new(get_clone_path);
+pub static CLONEPATH: LazyLock<PathMessage> = LazyLock::new(get_clone_path);
 
 pub enum ProcessResult {
     NotFound,
