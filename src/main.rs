@@ -94,7 +94,7 @@ fn main() {
     unsafe { std::env::set_var("PATH", newpath) };
     // Prints each argument on a separate line
     let args: Vec<String> = env::args().collect();
-    let first = args[0].split('/').last().unwrap();
+    let first = args[0].split('/').next_back().unwrap();
 
     match first {
         "flutterup" => {
