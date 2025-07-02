@@ -84,7 +84,7 @@ fn flutterupinfo() {
 
 fn main() {
     if let PathMessage::SomeError { error } = &*constenv::CLONEPATH {
-        eprintln!("SomeError with your environment: {}", error);
+        eprintln!("SomeError with your environment: {error}");
     }
     let PathMessage::GetPath { path } = &*constenv::CLONEPATH else {
         unreachable!()
